@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Générateur de CSS — Grid</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="result">
+            <div class="grid-preview" id="gridPreview">
+                <!-- Les "Grid-Item" seront générés dynamiquement ici -->
+            </div>
+        </div>
+
+        <div class="reglage">
+            <div class="gamme-etalon">
+                <label for="grid-columns">Nombre de colonnes :</label>
+                <input type="number" id="grid-columns" min="1" max="12" value="3">
+            </div>
+            <div class="gamme-etalon">
+                <label for="grid-rows">Nombre de lignes :</label>
+                <input type="number" id="grid-rows" min="1" max="12" value="2">
+            </div>
+            <div class="gamme-etalon">
+                <label for="grid-gap">Espacement entre les colonnes/lignes :</label>
+                <input type="number" id="grid-gap" min="0" max="50" value="10">
+            </div>
+            <div class="gamme-etalon">
+                <label for="num-grid-items">Nombre de Grid-Item :</label>
+                <input type="number" id="num-grid-items" min="1" max="100" value="6">
+            </div>
+        </div>
+
+        <div class="code-container">
+            <textarea id="styles" rows="2"></textarea>
+            <button id="copy-styles" onclick="copyStyles()">Copier le Style</button>
+            <!-- Bouton "Reset" -->
+            <button id="reset-styles" onclick="resetStyles()">Réinitialiser</button>
+        </div>
+
+    </div>
+
+    <script src="index.js"></script>
+</body>
+
+</html>

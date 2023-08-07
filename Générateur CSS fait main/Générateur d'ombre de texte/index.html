@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Générateur de code CSS — Text Shadow Generator</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="result">
+            <div id="preview">Text Shadow Preview</div>
+        </div>
+
+        <div class="reglage">
+            <!-- Les valeurs d'ombre de texte (text-shadow) -->
+            <div class="gamme-etalon">
+                <label for="text-shadow-x">Horizontal Shadow :</label>
+                <input type="range" id="text-shadow-x" min="-100" max="100" value="0">
+            </div>
+            <div class="gamme-etalon">
+                <label for="text-shadow-y">Vertical Shadow :</label>
+                <input type="range" id="text-shadow-y" min="-100" max="100" value="0">
+            </div>
+            <div class="gamme-etalon">
+                <label for="text-shadow-blur">Blur Radius :</label>
+                <input type="range" id="text-shadow-blur" min="0" max="100" value="0">
+            </div>
+            <div class="gamme-etalon">
+                <label for="text-shadow-opacity">Shadow Opacity :</label>
+                <input type="range" id="text-shadow-opacity" min="0" max="1" step="0.1" value="1">
+            </div>
+            <div class="gamme-etalon">
+                <label for="text-shadow-color">Shadow Color :</label>
+                <input type="color" id="text-shadow-color" value="#000000">
+            </div>
+        </div>
+
+        <div class="code-container">
+            <textarea id="styles" rows="2"></textarea>
+            <button id="copy-styles" onclick="copyStyles()">Copie le Style</button>
+            <!-- Bouton "Reset" -->
+            <button id="reset-styles" onclick="resetStyles()">Réinitialiser</button>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+
+</html>

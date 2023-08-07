@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Générateur de CSS — Text Styling Generator </title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="result">
+            <p id="preview">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse facilisis aliquet nunc
+                eget tincidunt.</p>
+        </div>
+
+        <div class="reglage">
+            <!-- Les valeurs pour l'alignement, l'espacement entre les lignes et les mots -->
+            <div class="gamme-etalon">
+                <label for="text-align">Alignement du texte :</label>
+                <select id="text-align">
+                    <option value="left">Gauche</option>
+                    <option value="center">Centre</option>
+                    <option value="right">Droite</option>
+                    <option value="justify">Justifié</option>
+                </select>
+            </div>
+            <div class="gamme-etalon">
+                <label for="line-height">Espacement entre les lignes :</label>
+                <input type="range" id="line-height" min="1" max="3" step="0.1" value="1.5">
+                <span id="line-height-value">1.5</span>
+            </div>
+            <div class="gamme-etalon">
+                <label for="word-spacing">Espacement entre les mots :</label>
+                <input type="range" id="word-spacing" min="0" max="2" step="0.1" value="0">
+                <span id="word-spacing-value">0em</span>
+            </div>
+            <div class="gamme-etalon">
+                <label for="font-size">Taille de la police :</label>
+                <input type="range" id="font-size" min="10" max="40" value="16">
+                <span id="font-size-value">16px</span>
+            </div>
+            <div class="input-wrapper">
+                <label for="bold-text">Gras :</label>
+                <input type="checkbox" id="bold-text">
+                <span id="bold-text-value">Normal</span>
+            </div>
+            <div class="input-wrapper">
+                <label for="italic-text">Italique :</label>
+                <input type="checkbox" id="italic-text">
+                <span id="italic-text-value">Normal</span>
+            </div>
+        </div>
+
+        <div class="code-container">
+            <textarea id="styles" rows="2"></textarea>
+            <button id="copy-styles" onclick="copyStyles()">Copie le Style</button>
+            <!-- Bouton "Reset" -->
+            <button id="reset-styles" onclick="resetStyles()">Réinitialiser</button>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+
+</html>

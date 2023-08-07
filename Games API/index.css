@@ -1,0 +1,87 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: none;
+  box-sizing: border-box;
+}
+
+body {
+  background: #1a212d;
+  height: 100vh;
+}
+
+.Liste_Jeux {
+  width: 100%;
+}
+
+.game-card {
+  vertical-align: middle;
+  display: inline-block;
+  width: 400px;
+  height: 400px;
+  background-color: gainsboro;
+  border: 1px solid #ccc;
+  border-radius: 5%;
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.image-container {
+  overflow: hidden;
+  max-height: 200px;
+}
+
+.game-card img {
+  width: 350px;
+  height: auto;
+  max-height: 200px;
+}
+#game-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#game-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+}
+
+.game-card:hover {
+  transform: translateY(-10px);
+}
+
+h1,
+h2 {
+  text-align: center;
+}
+
+.game-card {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+}
+
+.add-game-form {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 10px;
+  border: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
+}
+
+.add-game-form label {
+  color: white !important;
+}
+
+.add-game-form button {
+  margin-top: 10px;
+}

@@ -1,0 +1,58 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  background: #1a212d;
+}
+
+/* Styles pour la fiche détaillée */
+.game-details {
+  max-width: 1000px;
+  margin: 20px auto;
+  background-color: gainsboro;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.game-description {
+  margin-top: 10px;
+}
+
+.game-metacritic {
+  margin-top: 5px;
+  font-weight: bold;
+}
+
+.game-shops-title,
+.game-screenshots-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 20px;
+  text-decoration: underline;
+}
+
+.game-shops-list {
+  list-style: none;
+  padding: 0;
+}
+
+.game-shops-list li {
+  margin-bottom: 5px;
+}
+
+.game-screenshots-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  justify-content: space-around;
+  margin-top: 10px;
+}
+
+.game-screenshot {
+  width: 500px;
+  height: 250px;
+}

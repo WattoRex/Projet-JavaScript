@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="BorderRadius.css">
+    <title>Border Radius CSS Generator</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="result">
+            <div class="shape-preview" id="shapePreview"></div>
+        </div>
+
+        <div class="reglage">
+            <div class="gamme-etalon">
+                <label for="top-left">Coin supérieur gauche :</label>
+                <input type="range" id="top-left" min="0" max="100" value="0">
+                <span id="topLeftValue">0</span>
+            </div>
+            <div class="gamme-etalon">
+                <label for="top-right">Coin supérieur droit :</label>
+                <input type="range" id="top-right" min="0" max="100" value="100">
+                <span id="topRightValue">0</span>
+            </div>
+            <div class="gamme-etalon">
+                <label for="bottom-left">Coin inférieur gauche :</label>
+                <input type="range" id="bottom-left" min="0" max="100" value="0">
+                <span id="bottomLeftValue">0</span>
+            </div>
+            <div class="gamme-etalon">
+                <label for="bottom-right">Coin inférieur droit :</label>
+                <input type="range" id="bottom-right" min="0" max="100" value="100">
+                <span id="bottomRightValue">0</span>
+            </div>
+        </div>
+
+        <div class="code-container">
+            <textarea id="styles" rows="2"></textarea>
+            <button id="copy-styles" onclick="copyStyles()">Copier le Style</button>
+            <!-- Bouton "Reset" -->
+            <button id="reset-styles" onclick="resetStyles()">Réinitialiser</button>
+        </div>
+
+    </div>
+
+    <script src="BorderRadius.js"></script>
+</body>
+
+</html>

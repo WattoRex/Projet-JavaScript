@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Anim.css">
+    <title>Animation Keyframes Generator</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="result">
+            <div class="shape" id="shape"></div>
+        </div>
+
+        <div class="reglage">
+            <div class="gamme-etalon">
+                <label for="animation-name">Nom de l'animation :</label>
+                <input type="text" id="animation-name" value="customAnimation">
+            </div>
+            <div class="gamme-etalon">
+                <label for="animation-duration">Durée de l'animation (s) :</label>
+                <input type="range" id="animation-duration" min="1" max="10" value="2">
+                <span id="durationValue">2</span>
+            </div>
+            <div class="gamme-etalon">
+                <label for="animation-timing">Fonction de temporisation :</label>
+                <select id="animation-timing">
+                    <option value="ease">ease</option>
+                    <option value="linear">linear</option>
+                    <option value="ease-in">ease-in</option>
+                    <option value="ease-out">ease-out</option>
+                    <option value="ease-in-out">ease-in-out</option>
+                </select>
+            </div>
+            <div class="gamme-etalon">
+                <label for="animation-preset">Animation prédéfinie :</label>
+                <select id="animation-preset">
+                    <option value="bounce">Bounce</option>
+                    <option value="fade">Fade</option>
+                    <option value="rotate">Rotate</option>
+                    <option value="scale">Scale</option>
+                </select>
+            </div>
+        </div>
+
+        <button id="generate-button" onclick="generateAnimation()">Générer l'animation</button>
+
+        <div class="code-container">
+            <textarea id="animation-css-code" rows="4"></textarea>
+            <button id="copy-css-code" onclick="copyCSSCode()">Copier le code CSS</button>
+            <!-- Bouton "Reset" -->
+            <button id="reset-styles" onclick="resetStyles()">Réinitialiser</button>
+        </div>
+
+        <style id="generated-css"></style>
+        <script src="Anim.js"></script>
+</body>
+
+</html>
