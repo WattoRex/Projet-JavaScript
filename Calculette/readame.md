@@ -1,3 +1,4 @@
+
 Calculatrice JavaScript 
 
 Ce projet consiste en une calculatrice web basique développée en utilisant HTML, CSS et JavaScript. L'objectif principal de ce projet est de fournir une interface conviviale pour effectuer des opérations mathématiques simples.
