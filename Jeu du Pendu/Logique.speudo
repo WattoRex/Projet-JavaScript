@@ -1,0 +1,104 @@
+// Initialisation des éléments HTML
+Définir inputs comme l'élément ".word" du document
+Définir hintTag comme l'élément ".hint span" du document
+Définir guessLeft comme l'élément ".guess span" du document
+Définir mistakes comme l'élément ".wrong span" du document
+Définir resetBtn comme l'élément ".reset" du document
+Définir hintBtn comme l'élément ".showhint" du document
+Définir hintElement comme l'élément ".hint" du document
+Définir typeInput comme l'élément ".type-input" du document
+
+
+// Initialisation des variables du jeu
+Définir word, incorrectLetters, correctLetters, maxGuesses comme vides
+
+
+// Début de la fonction startNewGame
+Début de la fonction startNewGame
+    Afficher une alerte indiquant le début d'une nouvelle partie
+
+    // Masquer l'élément d'indice
+    Modifier le style de hintElement pour masquer et réduire l'opacité
+
+    // Sélectionner un mot aléatoire de la liste et configurer le jeu
+    Définir ranWord comme un élément aléatoire de la liste wordList
+    Affecter le mot de ranWord à la variable word
+    Si la longueur du mot est supérieure ou égale à 5, affecter 8 à maxGuesses, sinon 6
+    Initialiser incorrectLetters comme une liste vide
+    Initialiser correctLetters comme une liste vide
+    Affecter la valeur de hint de ranWord à hintTag
+    Affecter maxGuesses à guessLeft
+    Affecter incorrectLetters à mistakes
+
+    // Créer des champs de saisie pour chaque lettre du mot
+    Supprimer tous les enfants de inputs
+    Pour chaque lettre dans word
+        Créer un élément "input" désactivé avec le type "text"
+        Ajouter l'élément "input" à inputs
+    Fin Pour
+Fin de la fonction startNewGame
+
+
+// Début de la fonction handleInput avec le paramètre e
+Début de la fonction handleInput avec le paramètre e
+    Définir key comme la valeur en minuscules de la touche pressée
+
+    // Vérifier si la touche est alphabétique et n'a pas été devinée auparavant
+    Si key correspond à un motif alphabétique et key n'est pas dans incorrectLetters et key n'est pas dans correctLetters
+        Si word contient key
+            Pour chaque lettre et son index dans word
+                Si la lettre est égale à key
+                    Ajouter key à la valeur de l'input à l'index correspondant dans inputs
+                Fin Si
+            Fin Pour
+            Ajouter key à correctLetters
+        Sinon
+            Décrémenter maxGuesses
+            Ajouter key à incorrectLetters
+            Mettre à jour mistakes avec la liste incorrectLetters
+        Fin Si
+
+        Mettre à jour guessLeft avec maxGuesses
+
+        Si la longueur de correctLetters est égale à la longueur de word
+            Afficher une alerte indiquant la victoire avec le mot en majuscules
+            Appeler startNewGame
+        Sinon Si maxGuesses est inférieur à 1
+            Afficher une alerte indiquant la défaite
+            Pour chaque lettre et son index dans word
+                Affecter la lettre à l'input correspondant
+            Fin Pour
+        Fin Si
+
+        Effacer le contenu de typeInput
+    Fin Si
+Fin de la fonction handleInput
+
+
+// Début de la fonction showHintElement
+Début de la fonction showHintElement
+    Modifier le style de hintElement pour l'afficher et augmenter l'opacité
+Fin de la fonction showHintElement
+
+// Configurer les écouteurs d'événements
+Écouter un événement "click" sur resetBtn
+    Appeler startNewGame
+Fin de l'écouteur d'événement "click" sur resetBtn
+
+Écouter un événement "click" sur hintBtn
+    Appeler showHintElement
+Fin de l'écouteur d'événement "click" sur hintBtn
+
+Écouter un événement "input" sur typeInput
+    Appeler handleInput avec l'événement e en paramètre
+Fin de l'écouteur d'événement "input" sur typeInput
+
+Écouter un événement "click" sur inputs
+    Mettre le focus sur typeInput
+Fin de l'écouteur d'événement "click" sur inputs
+
+Écouter un événement "keydown" sur document
+    Mettre le focus sur typeInput
+Fin de l'écouteur d'événement "keydown" sur document
+
+Appeler startNewGame
