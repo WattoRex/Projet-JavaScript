@@ -1,0 +1,176 @@
+// Initialisation des variables
+Définir taskInput comme l'élément ".task-input input" du document
+Définir filters comme la liste d'éléments ".filters span" du document
+Définir clearAll comme l'élément ".clear-btn" du document
+Définir taskBox comme l'élément ".task-box" du document
+
+Définir editId comme vide
+Définir isEditTask comme faux
+Définir todos comme l'objet parsé depuis la chaîne JSON dans "todo-list" du localStorage
+
+
+// Pour chaque bouton de filtre dans filters
+Pour chaque élément btn dans filters
+    Écouter un événement "click" sur btn
+        Supprimer la classe "active" de l'élément "span" ayant la classe "active"
+        Ajouter la classe "active" à btn
+        Appeler la fonction showTodo avec l'identifiant de btn comme argument
+Fin Pour
+
+
+// Définir la fonction showTodo prenant en paramètre le filtre
+Début de la fonction showTodo avec le paramètre filter
+    Définir liTag comme une chaîne vide
+    Si todos existe
+        Pour chaque todo et son id dans todos
+            Définir completed comme une chaîne vide
+            Si le statut de todo est "completed", définir completed comme "checked"
+            Si filter est égal au statut de todo ou filter est égal à "all"
+                Ajouter à liTag une nouvelle ligne contenant le HTML pour un élément de liste avec les informations de todo
+            Fin Si
+        Fin Pour
+    Fin Si
+
+    Si liTag est vide, définir liTag comme une balise <span> indiquant qu'aucune tâche n'est présente
+    Sélectionner tous les éléments de classe ".task" dans taskBox et les stocker dans checkTask
+    Si la longueur de checkTask est nulle
+        Supprimer la classe "active" de clearAll
+    Sinon
+        Ajouter la classe "active" à clearAll
+    Fin Si
+
+    Si la hauteur de taskBox est supérieure ou égale à 300
+        Ajouter la classe "overflow" à taskBox
+    Sinon
+        Supprimer la classe "overflow" de taskBox
+    Fin Si
+
+    Remplacer le contenu de taskBox par liTag
+Fin de la fonction showTodo
+
+Appeler la fonction showTodo avec l'argument "all
+
+
+// Définir la fonction showMenu prenant en paramètre la tâche sélectionnée
+Début de la fonction showMenu avec le paramètre selectedTask
+    Sélectionner le dernier élément enfant de type "div" du parent de selectedTask et le stocker dans menuDiv
+    Ajouter la classe "show" à menuDiv
+    Écouter un événement "click" sur le document
+        Si la cible de l'événement n'est pas une balise "I" ou n'est pas égale à selectedTask
+            Supprimer la classe "show" de menuDiv
+        Fin Si
+Fin de la fonction showMenu
+
+
+// Définir la fonction updateStatus prenant en paramètre la tâche sélectionnée
+Début de la fonction updateStatus avec le paramètre selectedTask
+    Sélectionner le dernier élément enfant de selectedTask de type "p" et le stocker dans taskName
+    Si selectedTask est coché
+        Ajouter la classe "checked" à taskName
+        Mettre à jour le statut de todos à "completed" pour l'index selectedTask.id
+    Sinon
+        Supprimer la classe "checked" de taskName
+        Mettre à jour le statut de todos à "pending" pour l'index selectedTask.id
+    Fin Si
+    Stocker todos dans le localStorage sous la clé "todo-list" au format JSON
+Fin de la fonction updateStatus
+
+
+
+// Définir la fonction editTask prenant en paramètres l'identifiant de la tâche et le nom du texte
+Début de la fonction editTask avec les paramètres taskId et textName
+    Affecter taskId à editId
+    Affecter vrai à isEditTask
+    Affecter textName à la valeur de taskInput
+    Mettre le focus sur taskInput
+    Ajouter la classe "active" à taskInput
+Fin de la fonction editTask
+
+// Définir la fonction deleteTask prenant en paramètres l'identifiant de suppression et le filtre
+Début de la fonction deleteTask avec les paramètres deleteId et filter
+    Affecter faux à isEditTask
+    Supprimer l'élément d'index deleteId de todos
+    Stocker todos dans le localStorage sous la clé "todo-list" au format JSON
+    Appeler la fonction showTodo avec l'argument filter
+Fin de la fonction deleteTask
+
+Écouter un événement "click" sur clearAll
+    Affecter faux à isEditTask
+    Supprimer tous les éléments de todos
+    Stocker todos dans le localStorage sous la clé "todo-list" au format JSON
+    Appeler la fonction showTodo
+
+Écouter un événement "keyup" sur taskInput
+    Stocker le contenu de taskInput dans userTask en supprimant les espaces inutiles
+    Si la touche pressée est "Enter" et userTask n'est pas vide
+        Si isEditTask est faux
+            Si todos est vide, initialiser todos comme un tableau vide, sinon utiliser todos existant
+            Définir taskInfo comme un objet avec les propriétés name égale à userTask et status égal à "pending"
+            Ajouter taskInfo à todos
+        Sinon
+            Affecter faux à isEditTask
+            Mettre à jour la propriété name de todos à userTask pour l'index editId
+        Fin Si
+        Réinitialiser la valeur de taskInput à une chaîne vide
+        Stocker todos dans le localStorage sous la clé "todo-list" au format JSON
+        Appeler la fonction showTodo avec l'identifiant du "span" ayant la classe "active" comme argument
+    Fin Si
+Fin de l'écouteur d'événement "keyup" sur taskInput
+
+// Pseudo-code pour la réorganisation par glisser-déposer des tâches
+
+// Déclaration des variables globales
+Définir draggedTask comme null
+
+// Événement lors du début du glissement d'une tâche
+Début de la fonction dragStart avec un paramètre event
+    Affecter event.target à draggedTask
+Fin de la fonction dragStart
+
+// Événement lorsqu'une tâche est survolée pendant le glisser-déposer
+Début de la fonction dragOver avec un paramètre event
+    Empêcher le comportement par défaut de l'événement
+Fin de la fonction dragOver
+
+// Événement lorsque la tâche est lâchée (déposée) après un glisser-déposer
+Début de la fonction drop avec un paramètre event
+    Empêcher le comportement par défaut de l'événement
+    Trouver l'élément de tâche cible le plus proche ayant la classe ".task" dans event.target et le stocker dans dropTarget
+
+    Si draggedTask existe et dropTarget existe
+        Obtenir l'index de draggedTask parmi les enfants de taskBox et le stocker dans fromIndex
+        Obtenir l'index de dropTarget parmi les enfants de taskBox et le stocker dans toIndex
+
+        Si fromIndex est valide et toIndex est valide
+            Retirer un élément de l'index fromIndex de todos et le stocker dans la variable task
+            Insérer task à l'index toIndex de todos
+            Stocker todos dans le localStorage sous la clé "todo-list" au format JSON
+            Appeler la fonction showTodo avec l'identifiant du "span" ayant la classe "active" comme argument
+        Fin Si
+    Fin Si
+Fin de la fonction drop
+
+// Lors de la création des éléments de tâche dans la fonction showTodo
+Pour chaque tâche dans todos
+    Ajouter des attributs d'événement pour le glisser-déposer aux éléments de tâche
+    Associer dragStart à l'événement ondragstart
+    Associer dragOver à l'événement ondragover
+    Associer drop à l'événement ondrop
+Fin Pour
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
